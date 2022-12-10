@@ -1,0 +1,97 @@
+project_structure:
+    build: build
+    contracts: contracts
+    interfaces: interfaces
+    reports: reports
+    scripts: scripts
+    tests: tests
+
+networks:
+    default: development
+    development:
+        gas_limit: max
+        gas_buffer: 1
+        gas_price: 0
+        max_fee: null
+        priority_fee: null
+        reverting_tx_gas_limit: max
+        default_contract_owner: true
+        cmd_settings: null
+    live:
+        gas_limit: auto
+        gas_buffer: 1.1
+        gas_price: auto
+        max_fee: null
+        priority_fee: null
+        reverting_tx_gas_limit: false
+        default_contract_owner: false
+
+networks:
+    polygon-main:
+        weth_address: "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619"
+        usdc_address: "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174"
+        address_provider: "0xa97684ead0e402dC232d5A977953DF7ECBaB3CDb"
+        uni_router : "0xa5E0829CaCEd8fFDD4De3c43696c57F7D7A678ff"
+        sushi_router : "0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506"
+    polygon-main-fork:
+        weth_address: "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619"
+        usdc_address: "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174"
+        address_provider: "0xa97684ead0e402dC232d5A977953DF7ECBaB3CDb"
+        uni_router : "0xa5E0829CaCEd8fFDD4De3c43696c57F7D7A678ff"
+        sushi_router : "0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506"
+        cmd_settings:
+            unlock:
+                - 0x2093b4281990A568C9D588b8BCE3BFD7a1557Ebd
+        
+
+compiler:
+    evm_version: null
+    solc:
+        version: null
+        optimizer:
+            enabled: true
+            runs: 200
+        remappings: 
+          - "@aavecore=aave/aave-v3-core@1.16.2"
+          - "@uniswap=Uniswap/v2-periphery@1.0.0-beta.0"
+          - "@openzeppelin=OpenZeppelin/openzeppelin-contracts@3.0.0"
+    vyper:
+        version: null
+
+console:
+    show_colors: true
+    color_style: monokai
+    auto_suggest: true
+    completions: true
+    editing_mode: emacs
+
+reports:
+    exclude_paths: null
+    exclude_contracts: null
+    only_include_project: true
+
+hypothesis:
+    deadline: null
+    max_examples: 50
+    report_multiple_bugs: False
+    stateful_step_count: 10
+    phases:
+        explicit: true
+        reuse: true
+        generate: true
+        target: true
+        shrink: true
+
+wallets:
+    polygon-main:
+        private-key : ${PRIVATE_KEY}
+        
+
+autofetch_sources: false
+dependencies: 
+  - aave/aave-v3-core@1.16.2
+  - Uniswap/v2-periphery@1.0.0-beta.0
+  - OpenZeppelin/openzeppelin-contracts@3.0.0
+dev_deployment_artifacts: true
+
+dotenv: .env
